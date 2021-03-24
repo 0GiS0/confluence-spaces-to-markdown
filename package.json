@@ -1,0 +1,15 @@
+{
+  "name": "clean-confluence-html",
+  "version": "1.0.0",
+  "description": "",
+  "main": "clean-htmls.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-html-parser": "^3.1.2"
+  }
+}
