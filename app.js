@@ -1,6 +1,8 @@
 var fs = require("fs"),
     { parse } = require("node-html-parser"),
-    path = require('path');
+    path = require('path'),
+    toMarkdown = require('html-to-markdown');
+
 
 
 function readFiles(dirName, onFileContent, onError) {
@@ -30,9 +32,9 @@ function readFiles(dirName, onFileContent, onError) {
     })
 }
 
-const markdownFolder = 'markdown';
+const markdownFolder = 'markdowns';
 
-readFiles('/Users/gis/Downloads/FFMPEG', (fileName, content) => {
+readFiles('FOLDER_NAME', (fileName, content) => {
 
     console.log(`Processing ${fileName}`);
     // console.log(content);
@@ -49,6 +51,13 @@ readFiles('/Users/gis/Downloads/FFMPEG', (fileName, content) => {
 
     //Create HTML files with the main-content div only
     fs.writeFile(`${markdownFolder}/${fileName}`, mainContentDiv.innerHTML, function (err) {
+        if (err) {
+            return console.log(err);
+        }
+        console.log(`${fileName} saved on ${markdownFolder}`);
+    });
+
+    fs.writeFile(`${markdownFolder}/${fileName.replace(path.extname(fileName), '.md')}`, toMarkdown.convert(mainContentDiv.innerHTML), function (err) {
         if (err) {
             return console.log(err);
         }

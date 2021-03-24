@@ -1,5 +1,5 @@
 {
-  "name": "clean-confluence-html",
+  "name": "confluence-spaces-to-markdown",
   "version": "1.0.0",
   "description": "",
   "main": "clean-htmls.js",
@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "html-to-markdown": "^1.0.0",
     "node-html-parser": "^3.1.2"
   }
 }
