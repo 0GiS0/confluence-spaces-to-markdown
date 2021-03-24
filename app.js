@@ -1,8 +1,9 @@
 var fs = require("fs"),
     { parse } = require("node-html-parser"),
     path = require('path'),
-    toMarkdown = require('html-to-markdown');
+    TurndownService = require('turndown');
 
+var turndownService = new TurndownService();
 
 
 function readFiles(dirName, onFileContent, onError) {
@@ -34,7 +35,7 @@ function readFiles(dirName, onFileContent, onError) {
 
 const markdownFolder = 'markdowns';
 
-readFiles('FOLDER_NAME', (fileName, content) => {
+readFiles('/Users/gis/Downloads/FFMPEG', (fileName, content) => {
 
     console.log(`Processing ${fileName}`);
     // console.log(content);
@@ -57,7 +58,9 @@ readFiles('FOLDER_NAME', (fileName, content) => {
         console.log(`${fileName} saved on ${markdownFolder}`);
     });
 
-    fs.writeFile(`${markdownFolder}/${fileName.replace(path.extname(fileName), '.md')}`, toMarkdown.convert(mainContentDiv.innerHTML), function (err) {
+    console.log(turndownService.turndown(mainContentDiv.innerHTML));
+
+    fs.writeFile(`${markdownFolder}/${fileName.replace(path.extname(fileName), '.md')}`, turndownService.turndown(mainContentDiv.innerHTML), function (err) {
         if (err) {
             return console.log(err);
         }

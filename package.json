@@ -9,8 +9,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "html-to-markdown": "^1.0.0",
-    "node-html-parser": "^3.1.2"
+  "dependencies": {   
+    "node-html-parser": "^3.1.2",   
+    "turndown": "^7.0.0"
   }
 }
